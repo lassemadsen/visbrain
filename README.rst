@@ -46,7 +46,7 @@ Visbrain requires :
 
 * NumPy >= 1.13
 * SciPy
-* VisPy >= 0.5.3
+* VisPy == 0.6.1
 * Matplotlib >= 1.5.5
 * PyQt5
 * Pillow
@@ -60,4 +60,3 @@ Install Visbrain :
 .. code-block:: console
 
     pip install -U visbrain
-
