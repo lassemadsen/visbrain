@@ -31,11 +31,11 @@ from visbrain.utils import (Colormap, color2vb, convert_meshdata,
 logger = logging.getLogger('visbrain')
 
 # Light and color properties :
-LUT_LEN = 1024
+LUT_LEN = 8192
 LIGHT_POSITION = [0., 0., 1e7]
-LIGHT_INTENSITY = [1.] * 3
-COEF_AMBIENT = .05
-COEF_SPECULAR = 0.1
+LIGHT_INTENSITY = [.75] * 3
+COEF_AMBIENT = .3
+COEF_SPECULAR = 0
 SULCUS_COLOR = [.4] * 3 + [1.]
 
 # Vertex shader : executed code for individual vertices. The transformation

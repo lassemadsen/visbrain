@@ -97,6 +97,15 @@ class Figure(object):
         key 'axis' to specify if pictures have to share the same height (0)
         or width (1). Use 'extend' if the smallest (False) or the largest
         have to be considered as the reference.
+
+    Additional options
+    ------------------
+    fz_titles : int | 20
+        Specify the fontsize of subplot titles
+    fz_ylabels: int | 20
+        Specify the fontsize of ylabels
+    fz_xlabels: int | 20
+        Specify the fontsize of ylabels
     """
 
     def __init__(self, files, path=None, grid=None, figtitle=None, y=1.02,
@@ -104,7 +113,8 @@ class Figure(object):
                  subspace={'left': 0.05, 'right': 1., 'bottom': 0.1, 'top': .9,
                            'wspace': 0., 'hspace': 0.3}, rmax=True,
                  fig_bgcolor=None, ax_bgcolor=None, text_color='black',
-                 autocrop=False, autoresize=False):
+                 autocrop=False, autoresize=False, fz_titles=20, fz_ylabels=20,
+                 fz_xlabels=20):
         """Init."""
         self._data = []
         self._im = []
@@ -117,6 +127,9 @@ class Figure(object):
         self._rmax = rmax
         self._autocrop = autocrop
         self._autoresize = autoresize
+        self._fz_titles = fz_titles
+        self._fz_ylabels = fz_ylabels
+        self._fz_xlabels = fz_xlabels
 
         # ================ CHECKING ================
         # Files / path :
@@ -334,15 +347,15 @@ class Figure(object):
         # ================ POSITION ================
         if position == 'right':
             plt.subplots_adjust(right=1. - width - figmargin - pltmargin)
-            cax = plt.axes([1. - width - figmargin, height / 2, width, height])
+            cax = plt.axes([1. - width - figmargin, (1-height)/2, width, height])
             orientation = 'vertical'
         elif position == 'left':
             plt.subplots_adjust(left=figmargin + width + pltmargin)
-            cax = plt.axes([figmargin, height / 2, width, height])
+            cax = plt.axes([figmargin, (1-height)/2, width, height])
             orientation = 'vertical'
         elif position == 'bottom':
             plt.subplots_adjust(bottom=figmargin + width + pltmargin)
-            cax = plt.axes([height / 2, figmargin, height, width])
+            cax = plt.axes([(1-height)/2, figmargin, height, width])
             orientation = 'horizontal'
 
         cmap = self._customcmap(cmap, clim, vmin, under, vmax, over)
@@ -409,11 +422,11 @@ class Figure(object):
             ax.set_xticklabels('')
             ax.set_yticklabels('')
             if self._xlabels[num]:
-                ax.set_xlabel(self._xlabels[num], color=self._tcol)
+                ax.set_xlabel(self._xlabels[num], color=self._tcol, fontdict={'fontsize': self._fz_xlabels})
             if self._ylabels[num]:
-                ax.set_ylabel(self._ylabels[num], color=self._tcol)
+                ax.set_ylabel(self._ylabels[num], color=self._tcol, fontdict={'fontsize': self._fz_ylabels})
             if self._titles[num]:
-                ax.set_title(self._titles[num], y=self._y, color=self._tcol)
+                ax.set_title(self._titles[num], y=self._y, color=self._tcol, fontdict={'fontsize': self._fz_titles})
             # --------- Remove borders ---------
             if self._rmax:
                 for loc, spine in ax.spines.items():
