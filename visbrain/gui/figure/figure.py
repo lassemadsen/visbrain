@@ -212,6 +212,10 @@ class Figure(object):
         """
         self._fig.savefig(saveas, bbox_inches='tight', dpi=dpi,
                           facecolor=self._figcol)
+        
+        # Clear figure to avoid memory leak
+        self._fig.clear()
+        plt.close(self._fig)
 
     def colorbar_to_axis(self, toaxis, clim, cmap, vmin=None, under='gray',
                          vmax=None, over='red', title=None, ycb=10.,
