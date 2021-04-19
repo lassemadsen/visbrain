@@ -48,15 +48,16 @@ setup(
     install_requires=[
         "numpy>=1.13",
         "scipy",
-        "vispy>=0.5.3",
+        "vispy==0.6.1",
         "matplotlib>=1.5.5",
         "pyqt5",
         "pillow",
-        "PyOpenGL"
+        "PyOpenGL",
+        "nibabel"
     ],
     extras_require={
         'full': ["mne", "tensorpac", "pandas", "xlrd", "scikit-image",
-                 "nibabel", "imageio"],
+                 "imageio"],
         'sleep': ["mne", "tensorpac"],
         'roi': ["pandas", "xlrd"],
         'topo': ["scikit-image"]
