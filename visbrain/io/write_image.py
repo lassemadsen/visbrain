@@ -315,7 +315,8 @@ def write_fig_canvas(filename, canvas, widget=None, autocrop=False,
 
     # Get the size of the canvas and backend :
     c_size = canvas.size
-    b_size = canvas._backend._physical_size
+    # b_size = canvas._backend._physical_size # Does not work with offscreen rendering
+    b_size = (200,200)
 
     # If the GUI is displayed, c_size and b_size should be equals. If not,
     # and if the canvas is resizable, the canvas might have a different size
@@ -377,7 +378,7 @@ def write_fig_canvas(filename, canvas, widget=None, autocrop=False,
         new_width = int(b_size[0] * factor)
         new_height = int(b_size[1] * factor)
         # Set it to the canvas, backend and the widget :
-        canvas._backend._vispy_set_physical_size(new_width, new_height)
+        # canvas._backend._vispy_set_physical_size(new_width, new_height) # Does not work with offscreen rendering
         canvas.size = (new_width, new_height)
         if widget is not None:
             widget.size = (new_width, new_height)

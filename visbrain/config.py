@@ -3,6 +3,13 @@ import sys
 import getopt
 import logging
 
+import vispy
+try:
+    vispy.use(app='osmesa')
+    assert vispy.app.use_app().backend_name == 'osmesa', 'Not using OSMesa'
+except:
+    pass
+
 from PyQt5 import QtWidgets
 from vispy import app as visapp
 

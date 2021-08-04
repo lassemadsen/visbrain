@@ -51,6 +51,7 @@ Visbrain requires :
 * PyQt5
 * Pillow
 * PyOpenGL
+* nibabel
 
 User installation
 +++++++++++++++++
@@ -59,4 +60,4 @@ Install Visbrain :
 
 .. code-block:: console
 
-    pip install -U visbrain
+    pip install git+https://github.com/lassemadsen/visbrain#egg=visbrain
