@@ -214,8 +214,8 @@ class Figure(object):
                           facecolor=self._figcol)
         
         # Clear figure to avoid memory leak
-        self._fig.clear()
-        plt.close(self._fig)
+        self._fig.clf()
+        plt.close()
 
     def colorbar_to_axis(self, toaxis, clim, cmap, vmin=None, under='gray',
                          vmax=None, over='red', title=None, ycb=10.,
