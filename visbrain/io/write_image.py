@@ -378,7 +378,11 @@ def write_fig_canvas(filename, canvas, widget=None, autocrop=False,
         new_width = int(b_size[0] * factor)
         new_height = int(b_size[1] * factor)
         # Set it to the canvas, backend and the widget :
-        # canvas._backend._vispy_set_physical_size(new_width, new_height) # Does not work with offscreen rendering
+        try:
+            canvas._backend._vispy_set_physical_size(new_width, new_height) # Does not work/is not necessary with offscreen rendering
+        except:
+            pass
+        
         canvas.size = (new_width, new_height)
         if widget is not None:
             widget.size = (new_width, new_height)
