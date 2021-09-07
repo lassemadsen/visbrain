@@ -17,9 +17,9 @@ from visbrain.utils.others import Profiler
 from visbrain.utils.logging import set_log_level
 
 
-# Set 'info' as the default logging level
+# Set 'warning' as the default logging level
 logger = logging.getLogger('visbrain')
-set_log_level('info')
+set_log_level('warning')
 
 # Configuration dict
 CONFIG = {}

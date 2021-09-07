@@ -14,7 +14,6 @@ from ..io import (is_nibabel_installed, is_pandas_installed,
                   read_gii, read_obj, is_freesurfer_mesh_file,
                   read_freesurfer_mesh)
 
-logging.disable(logging.INFO)
 logger = logging.getLogger('visbrain')
 
 
