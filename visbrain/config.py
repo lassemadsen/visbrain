@@ -2,6 +2,8 @@
 import sys
 import getopt
 import logging
+import os
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
 
 import vispy
 try:
