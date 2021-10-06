@@ -366,7 +366,7 @@ class BrainVisual(Visual):
             self._bgd_data[mask_data] = .5
             self._bgd_buffer.set_data(self._bgd_data)
         if not len(vertices):
-            logger.warning('Vertices array is empty. Abandoning.')
+            #logger.warning('Vertices array is empty. Abandoning.')
             return
 
         data = np.asarray(data)
