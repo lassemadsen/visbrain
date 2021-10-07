@@ -470,7 +470,7 @@ class BrainVisual(Visual):
         self._math_buffer.delete()
 
     def _build_bgd_texture(self):
-        color_1d = np.c_[np.array([1.] * 4), np.array(self.mask_color),
+        color_1d = np.c_[np.array([0.95, 0.95, 0.95, 1]), np.array(self.mask_color),
                          np.array(SULCUS_COLOR)].T
         text_1d = gloo.Texture1D(color_1d.astype(np.float32))
         self.shared_program.vert['u_bgd_text'] = text_1d
