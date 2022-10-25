@@ -295,7 +295,7 @@ class Figure(object):
                         width=.02, pltmargin=.02, figmargin=.07, vmin=None,
                         under='gray', vmax=None, over='red', title=None,
                         ycb=10., fz_title=15, ticks='complete', fz_ticks=10,
-                        outline=False):
+                        outline=False, n_discrete=None):
         """Add a colorbar to a particular axis.
 
         Parameters
@@ -343,6 +343,8 @@ class Figure(object):
             Fontsize of tick labels.
         outline : bool | False
             Specify if the box arround the colorbar have to be displayed.
+        n_discrete : int | None
+            If set, the colorbar will be split into n_discrete colors
 
         See also
         --------
@@ -363,8 +365,16 @@ class Figure(object):
             orientation = 'horizontal'
 
         cmap = self._customcmap(cmap, clim, vmin, under, vmax, over)
-        cb = mpl.colorbar.ColorbarBase(cax, cmap=cmap, orientation=orientation,
-                                       norm=mpl.colors.Normalize(*clim))
+        
+        if isinstance(n_discrete, int):
+            norm = mpl.colors.BoundaryNorm(np.linspace(0,n_discrete,n_discrete+1), cmap.N)
+            vmin = np.linspace(0,n_discrete,n_discrete+1)[0]
+            vmax = np.linspace(0,n_discrete,n_discrete+1)[-1]
+            clim = [vmin, vmax]
+        else:
+            norm = mpl.colors.Normalize(*clim)
+
+        cb = mpl.colorbar.ColorbarBase(cax, cmap=cmap, orientation=orientation, norm=norm)
 
         # ----------------- CBAR -----------------
         self._cbar(cb, cmap, clim, vmin, under, vmax, over, title, ycb,
