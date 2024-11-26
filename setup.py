@@ -51,9 +51,9 @@ setup(
         "vispy>=0.5.3",
         "matplotlib>=1.5.5",
         "pyqt5",
-        "pillow",
+        "pillow==9.5.0",
         "PyOpenGL",
-        "nibabel"
+        "nibabel==4.0.2"
     ],
     extras_require={
         'full': ["mne", "tensorpac", "pandas", "xlrd", "scikit-image",
@@ -71,6 +71,7 @@ setup(
                  "Programming Language :: Python :: 3.5",
                  "Programming Language :: Python :: 3.6",
                  "Programming Language :: Python :: 3.7",
+                 "Programming Language :: Python :: 3.8",
                  "Operating System :: MacOS",
                  "Operating System :: POSIX :: Linux",
                  "Operating System :: Microsoft :: Windows",
