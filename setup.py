@@ -46,7 +46,7 @@ setup(
     platforms='any',
     setup_requires=['numpy'],
     install_requires=[
-        "numpy>=1.13",
+        "numpy>=1.23, <=1.26.4",
         "scipy",
         "vispy>=0.5.3",
         "matplotlib>=1.5.5",
@@ -72,6 +72,7 @@ setup(
                  "Programming Language :: Python :: 3.6",
                  "Programming Language :: Python :: 3.7",
                  "Programming Language :: Python :: 3.8",
+                 "Programming Language :: Python :: 3.9",
                  "Operating System :: MacOS",
                  "Operating System :: POSIX :: Linux",
                  "Operating System :: Microsoft :: Windows",
