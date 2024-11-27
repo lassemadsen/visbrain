@@ -46,7 +46,7 @@ setup(
     platforms='any',
     setup_requires=['numpy'],
     install_requires=[
-        "numpy>=1.21.6, <=1.26.4",
+        "numpy>=1.13, <=1.26.4",
         "scipy",
         "vispy>=0.5.3",
         "matplotlib>=1.5.5",
