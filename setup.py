@@ -52,7 +52,7 @@ setup(
         "matplotlib>=1.5.5",
         "pyqt5",
         "pillow==9.5.0",
-        "PyOpenGL",
+        "PyOpenGL>=3.1.4, <=3.1.6",
         "nibabel==4.0.2"
     ],
     extras_require={
