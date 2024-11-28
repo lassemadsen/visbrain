@@ -53,6 +53,7 @@ setup(
         "pyqt5",
         "pillow==9.5.0",
         "PyOpenGL>=3.1.4, <=3.1.6",
+        "PyOpenGL_accelerate",
         "nibabel==4.0.2"
     ],
     extras_require={
