@@ -216,9 +216,22 @@ def read_obj(path):
     vertices = np.array([float(f) for v in vertices for f in v.split()])
     vertices = vertices.reshape(n_vertices, 3)
 
-    n_faces = int(data[n_vertices*2+3])
-    faces = data[-1]
-    faces = np.array([int(f) for f in faces.split()])
+    # Extract faces
+    combined_list = []
+
+    found_non_empty = False  # Flag to indicate whether we've passed trailing empty lines
+    for entry in reversed(data):
+        if entry.strip() == "":
+            if found_non_empty:  # Stop processing once we encounter an empty line after data
+                break
+            continue  # Ignore trailing empty lines
+        found_non_empty = True  # Mark that we have passed valid data
+        combined_list.extend(map(int, reversed(entry.split())))  # Split, reverse, convert to int, and add to combined list
+
+    # Reverse the combined list to restore original order
+    combined_list.reverse()
+
+    faces = np.array(combined_list)
     faces = faces.reshape(int(len(faces)/3), 3)
 
     return vertices, faces
