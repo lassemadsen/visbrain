@@ -207,24 +207,20 @@ def read_obj(path):
     """
     logger.info('    OBJ file detected')
     vertices, faces = [], []
-    for line in open(path, "r"):
-        if line.startswith('#'): continue  # noqa
-        values = line.split()
-        if not values: continue  # noqa
-        if values[0] == 'v':
-            v = map(float, values[1:4])
-            vertices.append(list(v))
-        elif values[0] == 'f':
-            _face = []
-            for v in values[1:]:
-                w = v.split('/')
-                _face.append(int(w[0]))
-            faces.append([_face])
 
-    vertices = np.array(vertices)
-    faces = np.array(faces).squeeze() - 1
-    if faces.shape[-1] == 4:  # quad index -> triangles (0 as reference)
-        faces = np.r_[faces[:, [0, 1, 2]], faces[:, [0, 2, 3]]]
+    with open(path, 'r') as fs:
+        data = fs.read().splitlines()
+
+    n_vertices = int(data[0].split(' ')[-1])
+    vertices = data[1:n_vertices+1]
+    vertices = np.array([float(f) for v in vertices for f in v.split()])
+    vertices = vertices.reshape(n_vertices, 3)
+
+    n_faces = int(data[n_vertices*2+3])
+    faces = data[-1]
+    faces = np.array([int(f) for f in faces.split()])
+    faces = faces.reshape(int(len(faces)/3), 3)
+
     return vertices, faces
 
 
