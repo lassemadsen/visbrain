@@ -4,7 +4,6 @@ import getopt
 import logging
 import os
 
-
 import vispy
 try:
     vispy.use(app='osmesa')
@@ -13,7 +12,8 @@ try:
     os.environ["OMP_NUM_THREADS"] = "1"  # Avoid multithreading
     os.environ["QT_QPA_PLATFORM"] = "offscreen" # Set when plotting on headless cluster 
 except Exception as e:
-    print("Error setting up vispy backend:", e)
+    # print("Error setting up vispy backend:", e)
+    pass
 
 from PyQt5 import QtWidgets
 from vispy import app as visapp
